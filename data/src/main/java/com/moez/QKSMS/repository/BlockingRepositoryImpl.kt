@@ -110,7 +110,7 @@ class BlockingRepositoryImpl @Inject constructor(
                 .findAll()
         for (blockedRegex in blockedRegexps){
             val regex = Regex(blockedRegex.regex)
-            if (regex.containsMatchIn(content)) return true
+            if (regex.containsMatchIn(content) || content.contains(blockedRegex.regex)) return true
         }
         return false
     }
